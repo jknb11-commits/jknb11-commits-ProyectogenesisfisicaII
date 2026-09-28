@@ -1,0 +1,2770 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Proyecto Génesis | Electromagnetismo</title>
+
+<style>
+:root{
+    --bg:#06101d;
+    --bg2:#0a1727;
+    --card:#0e1d30;
+    --card2:#13283f;
+    --line:#29445d;
+    --text:#f4f8fc;
+    --muted:#9db0c5;
+    --cyan:#42d9ff;
+    --violet:#7967ff;
+    --green:#45e08a;
+    --yellow:#ffc857;
+    --red:#ff6878;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:
+        radial-gradient(circle at 10% 5%,rgba(66,217,255,.13),transparent 25%),
+        radial-gradient(circle at 90% 10%,rgba(121,103,255,.13),transparent 25%),
+        linear-gradient(180deg,#06101d,#091827 60%,#06101d);
+    color:var(--text);
+    min-height:100vh;
+}
+
+/* =========================
+HEADER
+========================= */
+
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(5,14,26,.95);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid var(--line);
+}
+
+.nav{
+    max-width:1450px;
+    margin:auto;
+    padding:14px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo-icon{
+    width:46px;
+    height:46px;
+    border-radius:13px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,var(--cyan),var(--violet));
+    font-size:25px;
+    box-shadow:0 0 30px rgba(66,217,255,.25);
+}
+
+.logo-title{
+    font-size:16px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.logo-sub{
+    color:var(--muted);
+    font-size:11px;
+    margin-top:3px;
+}
+
+.nav-buttons{
+    display:flex;
+    gap:8px;
+}
+
+.nav-buttons button{
+    background:transparent;
+    color:var(--muted);
+    border:1px solid var(--line);
+    border-radius:8px;
+    padding:8px 12px;
+    cursor:pointer;
+}
+
+.nav-buttons button:hover{
+    color:white;
+    border-color:var(--cyan);
+}
+
+/* =========================
+HERO
+========================= */
+
+.hero{
+    max-width:1450px;
+    margin:auto;
+    padding:65px 24px 35px;
+    display:grid;
+    grid-template-columns:1.4fr .6fr;
+    gap:35px;
+    align-items:center;
+}
+
+.badge{
+    display:inline-block;
+    color:var(--cyan);
+    background:rgba(66,217,255,.08);
+    border:1px solid rgba(66,217,255,.35);
+    border-radius:25px;
+    padding:7px 13px;
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1px;
+    margin-bottom:18px;
+}
+
+.hero h1{
+    font-size:clamp(40px,6vw,72px);
+    line-height:.92;
+    letter-spacing:-3px;
+    margin-bottom:22px;
+}
+
+.hero h1 span{
+    color:var(--cyan);
+}
+
+.hero-text{
+    max-width:850px;
+    color:var(--muted);
+    font-size:16px;
+    line-height:1.75;
+}
+
+.hero-card{
+    background:linear-gradient(145deg,var(--card2),var(--card));
+    border:1px solid var(--line);
+    border-radius:22px;
+    padding:30px;
+    text-align:center;
+    box-shadow:0 20px 60px rgba(0,0,0,.3);
+}
+
+.equation{
+    font-size:46px;
+    color:var(--cyan);
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.hero-card h3{
+    margin-bottom:9px;
+}
+
+.hero-card p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+}
+
+/* =========================
+PROGRESS
+========================= */
+
+.progress{
+    max-width:1450px;
+    margin:auto;
+    padding:0 24px 30px;
+}
+
+.progress-box{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:15px;
+    padding:20px;
+}
+
+.progress-top{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:12px;
+}
+
+.progress-top strong{
+    color:var(--cyan);
+}
+
+.progress-bar{
+    height:11px;
+    background:#040c15;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.progress-fill{
+    width:0%;
+    height:100%;
+    background:linear-gradient(90deg,var(--cyan),var(--violet));
+    transition:.5s;
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:15px;
+}
+
+.stat{
+    background:#081523;
+    border:1px solid rgba(255,255,255,.06);
+    border-radius:10px;
+    text-align:center;
+    padding:13px;
+}
+
+.stat strong{
+    display:block;
+    font-size:21px;
+    color:var(--cyan);
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:11px;
+}
+
+/* =========================
+SECTION
+========================= */
+
+.section{
+    max-width:1450px;
+    margin:auto;
+    padding:35px 24px;
+}
+
+.section-title{
+    margin-bottom:24px;
+}
+
+.section-title h2{
+    font-size:30px;
+    margin-bottom:7px;
+}
+
+.section-title p{
+    color:var(--muted);
+    line-height:1.6;
+}
+
+/* =========================
+SEARCH
+========================= */
+
+.search-area{
+    max-width:1450px;
+    margin:auto;
+    padding:0 24px 25px;
+}
+
+.search{
+    width:100%;
+    padding:13px 15px;
+    border-radius:10px;
+    border:1px solid var(--line);
+    background:var(--card);
+    color:white;
+    outline:none;
+}
+
+.search:focus{
+    border-color:var(--cyan);
+}
+
+/* =========================
+WEEKS
+========================= */
+
+.weeks{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(360px,1fr));
+    gap:20px;
+}
+
+.week{
+    background:linear-gradient(145deg,var(--card),#091827);
+    border:1px solid var(--line);
+    border-radius:18px;
+    overflow:hidden;
+    transition:.25s;
+}
+
+.week:hover{
+    transform:translateY(-4px);
+    border-color:rgba(66,217,255,.45);
+}
+
+.week-head{
+    padding:20px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+}
+
+.week-number{
+    color:var(--cyan);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.week-title{
+    font-size:20px;
+    font-weight:900;
+    margin-top:5px;
+}
+
+.week-icon{
+    font-size:30px;
+}
+
+.week-body{
+    padding:18px;
+}
+
+/* NEWS */
+
+.news{
+    padding:15px;
+    border-radius:11px;
+    background:rgba(121,103,255,.08);
+    border:1px solid rgba(121,103,255,.3);
+    margin-bottom:15px;
+}
+
+.news-label{
+    color:#aaa0ff;
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1px;
+    margin-bottom:6px;
+}
+
+.news h4{
+    font-size:14px;
+    margin-bottom:6px;
+}
+
+.news p{
+    color:#becbd9;
+    font-size:12px;
+    line-height:1.55;
+}
+
+.news .source{
+    display:block;
+    margin-top:9px;
+    color:var(--cyan);
+    font-size:10px;
+}
+
+/* CONTENT */
+
+.content{
+    padding:14px;
+    border:1px solid rgba(255,255,255,.07);
+    background:rgba(255,255,255,.025);
+    border-radius:11px;
+    margin-bottom:10px;
+}
+
+.content-name{
+    font-size:14px;
+    line-height:1.4;
+    margin-bottom:10px;
+}
+
+.content-bottom{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.mission-btn{
+    padding:8px 11px;
+    border-radius:7px;
+    background:rgba(66,217,255,.08);
+    border:1px solid rgba(66,217,255,.3);
+    color:var(--cyan);
+    cursor:pointer;
+    font-size:11px;
+    font-weight:bold;
+}
+
+.mission-btn:hover{
+    background:rgba(66,217,255,.18);
+}
+
+.done{
+    color:var(--green);
+    font-size:10px;
+    font-weight:900;
+}
+
+/* LAB */
+
+.lab-banner{
+    margin-top:15px;
+    padding:15px;
+    border-radius:11px;
+    background:rgba(255,200,87,.08);
+    border:1px solid rgba(255,200,87,.4);
+}
+
+.lab-banner strong{
+    display:block;
+    color:var(--yellow);
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+.lab-banner p{
+    color:#cad5df;
+    font-size:12px;
+    line-height:1.5;
+}
+
+.lab-link{
+    display:inline-block;
+    margin-top:9px;
+    background:var(--yellow);
+    color:#111;
+    padding:8px 11px;
+    border-radius:7px;
+    text-decoration:none;
+    font-size:10px;
+    font-weight:900;
+}
+
+/* =========================
+LABORATORIES
+========================= */
+
+.lab-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+}
+
+.lab-card{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:22px;
+}
+
+.lab-week{
+    color:var(--yellow);
+    font-size:11px;
+    font-weight:900;
+}
+
+.lab-card h3{
+    margin:8px 0;
+}
+
+.lab-card p{
+    color:var(--muted);
+    font-size:13px;
+    line-height:1.6;
+}
+
+.lab-card ul{
+    margin:12px 0 0 17px;
+    color:#cad5df;
+    font-size:12px;
+    line-height:1.7;
+}
+
+/* =========================
+MODAL
+========================= */
+
+.modal{
+    display:none;
+    position:fixed;
+    inset:0;
+    z-index:3000;
+    background:rgba(0,0,0,.8);
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+}
+
+.modal.active{
+    display:flex;
+}
+
+.modal-box{
+    width:min(900px,100%);
+    max-height:94vh;
+    overflow-y:auto;
+    background:#091827;
+    border:1px solid var(--line);
+    border-radius:20px;
+    box-shadow:0 30px 100px rgba(0,0,0,.65);
+}
+
+.modal-header{
+    padding:23px;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+}
+
+.modal-week{
+    color:var(--cyan);
+    font-size:11px;
+    font-weight:900;
+    letter-spacing:1px;
+}
+
+.modal-header h2{
+    margin-top:6px;
+    font-size:26px;
+}
+
+.close{
+    border:none;
+    background:transparent;
+    color:white;
+    font-size:28px;
+    cursor:pointer;
+}
+
+.modal-content{
+    padding:23px;
+}
+
+.duration{
+    display:inline-block;
+    padding:7px 11px;
+    border-radius:20px;
+    background:rgba(255,200,87,.09);
+    border:1px solid rgba(255,200,87,.3);
+    color:var(--yellow);
+    font-size:11px;
+    font-weight:900;
+    margin-bottom:20px;
+}
+
+.block{
+    margin-bottom:20px;
+}
+
+.block-title{
+    color:var(--cyan);
+    font-size:13px;
+    font-weight:900;
+    margin-bottom:9px;
+}
+
+.block p{
+    color:#cad6e2;
+    font-size:14px;
+    line-height:1.75;
+}
+
+.data-box{
+    background:#050e18;
+    border:1px solid var(--line);
+    border-radius:11px;
+    padding:15px;
+}
+
+.data-row{
+    display:flex;
+    justify-content:space-between;
+    gap:20px;
+    padding:9px 0;
+    border-bottom:1px solid rgba(255,255,255,.06);
+    font-size:13px;
+}
+
+.data-row:last-child{
+    border-bottom:none;
+}
+
+.data-row span:first-child{
+    color:var(--muted);
+}
+
+.data-row span:last-child{
+    font-weight:bold;
+}
+
+.phase{
+    background:#071320;
+    border:1px solid rgba(255,255,255,.07);
+    border-radius:11px;
+    padding:15px;
+    margin-bottom:10px;
+}
+
+.phase-head{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:7px;
+}
+
+.phase-title{
+    color:var(--cyan);
+    font-size:12px;
+    font-weight:900;
+}
+
+.phase-time{
+    color:var(--yellow);
+    font-size:11px;
+    font-weight:900;
+}
+
+.phase p{
+    color:#c8d4df;
+    font-size:13px;
+    line-height:1.65;
+}
+
+.question{
+    padding:16px;
+    border-radius:11px;
+    background:rgba(121,103,255,.08);
+    border:1px solid rgba(121,103,255,.3);
+    color:#e2e6ff;
+    line-height:1.7;
+    font-size:14px;
+}
+
+.evidence{
+    padding:16px;
+    border-radius:11px;
+    background:rgba(69,224,138,.07);
+    border:1px solid rgba(69,224,138,.25);
+    color:#cde9d9;
+    font-size:13px;
+    line-height:1.7;
+}
+
+.complete{
+    width:100%;
+    padding:14px;
+    border:none;
+    border-radius:10px;
+    background:linear-gradient(90deg,var(--cyan),var(--violet));
+    color:white;
+    font-weight:900;
+    cursor:pointer;
+}
+
+.complete:disabled{
+    opacity:.55;
+}
+
+/* =========================
+FOOTER
+========================= */
+
+footer{
+    margin-top:50px;
+    border-top:1px solid var(--line);
+    text-align:center;
+    padding:40px 20px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+footer strong{
+    color:var(--cyan);
+}
+
+/* =========================
+RESPONSIVE
+========================= */
+
+@media(max-width:800px){
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .nav-buttons{
+        display:none;
+    }
+
+    .weeks{
+        grid-template-columns:1fr;
+    }
+
+    .stats{
+        grid-template-columns:1fr;
+    }
+
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<div class="nav">
+
+<div class="logo">
+
+<div class="logo-icon">⚡</div>
+
+<div>
+<div class="logo-title">
+PROYECTO GÉNESIS
+</div>
+
+<div class="logo-sub">
+Electromagnetismo · Física
+</div>
+</div>
+
+</div>
+
+<div class="nav-buttons">
+
+<button onclick="go('ruta')">
+Ruta
+</button>
+
+<button onclick="go('laboratorios')">
+Laboratorios
+</button>
+
+</div>
+
+</div>
+
+</header>
+
+
+<section class="hero">
+
+<div>
+
+<span class="badge">
+MISIÓN ACADÉMICA · 15 SEMANAS · 90 MIN POR ACTIVIDAD
+</span>
+
+<h1>
+DOMINA EL<br>
+<span>ELECTROMAGNETISMO</span>
+</h1>
+
+<p class="hero-text">
+
+Bienvenido a una nueva etapa de entrenamiento físico.
+
+Durante esta misión estudiarás electricidad, campos eléctricos,
+potencial, circuitos, magnetismo, inducción, ondas electromagnéticas,
+óptica y física cuántica.
+
+<br><br>
+
+Las actividades no están diseñadas para simplemente sustituir
+datos en ecuaciones. Cada misión exige interpretar una situación,
+construir un modelo físico, estimar, calcular, representar,
+argumentar y evaluar si el resultado tiene sentido.
+
+<br><br>
+
+<strong style="color:white">
+Cada actividad tiene una duración aproximada de 90 minutos.
+</strong>
+
+</p>
+
+</div>
+
+
+<div class="hero-card">
+
+<div class="equation">
+∇ · E = ρ/ε₀
+</div>
+
+<h3>
+Tu misión
+</h3>
+
+<p>
+Convertir fenómenos físicos en modelos que permitan
+explicar y resolver problemas del mundo real.
+</p>
+
+</div>
+
+</section>
+
+
+<section class="progress">
+
+<div class="progress-box">
+
+<div class="progress-top">
+
+<span>
+PROGRESO DE LA MISIÓN
+</span>
+
+<strong id="progressText">
+0%
+</strong>
+
+</div>
+
+<div class="progress-bar">
+
+<div
+id="progressFill"
+class="progress-fill">
+</div>
+
+</div>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="completed">
+0
+</strong>
+<span>
+Misiones completadas
+</span>
+</div>
+
+<div class="stat">
+<strong id="total">
+0
+</strong>
+<span>
+Misiones disponibles
+</span>
+</div>
+
+<div class="stat">
+<strong id="xp">
+0
+</strong>
+<span>
+XP
+</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="search-area">
+
+<input
+class="search"
+id="search"
+placeholder="Buscar una misión o contenido..."
+oninput="render()"
+>
+
+</section>
+
+
+<section class="section" id="ruta">
+
+<div class="section-title">
+
+<h2>
+🛰️ Ruta de entrenamiento
+</h2>
+
+<p>
+47 misiones · 15 semanas · 90 minutos por misión
+</p>
+
+</div>
+
+<div class="weeks" id="weeks"></div>
+
+</section>
+
+
+<section class="section" id="laboratorios">
+
+<div class="section-title">
+
+<h2>
+🔬 Laboratorios estratégicos
+</h2>
+
+<p>
+Las semanas 5, 9, 11 y 14 incluyen una experiencia experimental.
+Debe consultar el laboratorio correspondiente directamente
+en el entorno del curso.
+</p>
+
+</div>
+
+
+<div class="lab-grid">
+
+<div class="lab-card">
+
+<div class="lab-week">
+SEMANA 05
+</div>
+
+<h3>
+⚡ Generador electrostático y capacitancia
+</h3>
+
+<p>
+Analizar experimentalmente carga, capacitancia, dieléctricos
+y fuerza electromotriz.
+</p>
+
+<ul>
+<li>Ver el laboratorio del entorno.</li>
+<li>Seguir las instrucciones experimentales.</li>
+<li>Registrar los datos.</li>
+<li>Realizar cálculos.</li>
+<li>Entregar la evidencia solicitada.</li>
+</ul>
+
+</div>
+
+
+<div class="lab-card">
+
+<div class="lab-week">
+SEMANA 09
+</div>
+
+<h3>
+🧲 Campo magnético
+</h3>
+
+<p>
+Estudiar experimentalmente la relación entre corriente
+eléctrica y campo magnético.
+</p>
+
+<ul>
+<li>Ver el laboratorio del entorno.</li>
+<li>Registrar observaciones.</li>
+<li>Analizar los resultados.</li>
+<li>Comparar con el modelo teórico.</li>
+</ul>
+
+</div>
+
+
+<div class="lab-card">
+
+<div class="lab-week">
+SEMANA 11
+</div>
+
+<h3>
+〰️ Oscilaciones electromagnéticas
+</h3>
+
+<p>
+Analizar experimentalmente inductancia y oscilaciones
+electromagnéticas.
+</p>
+
+<ul>
+<li>Ver el laboratorio del entorno.</li>
+<li>Registrar mediciones.</li>
+<li>Construir el análisis cuantitativo.</li>
+<li>Comparar teoría y experimento.</li>
+</ul>
+
+</div>
+
+
+<div class="lab-card">
+
+<div class="lab-week">
+SEMANA 14
+</div>
+
+<h3>
+🌈 Luz y física cuántica
+</h3>
+
+<p>
+Investigar experimentalmente propiedades de la luz y
+evidencias del comportamiento cuántico.
+</p>
+
+<ul>
+<li>Ver el laboratorio del entorno.</li>
+<li>Registrar los datos.</li>
+<li>Analizar el fenómeno.</li>
+<li>Presentar conclusiones.</li>
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="modal" id="modal">
+
+<div class="modal-box">
+
+<div class="modal-header">
+
+<div>
+
+<div
+class="modal-week"
+id="modalWeek">
+</div>
+
+<h2 id="modalTitle">
+</h2>
+
+</div>
+
+<button
+class="close"
+onclick="closeModal()">
+×
+</button>
+
+</div>
+
+
+<div class="modal-content">
+
+<div class="duration">
+⏱️ DURACIÓN TOTAL: 90 MINUTOS · +20 XP
+</div>
+
+
+<div class="block">
+
+<div class="block-title">
+📖 SITUACIÓN PROBLEMA
+</div>
+
+<p id="case"></p>
+
+</div>
+
+
+<div class="block">
+
+<div class="block-title">
+📊 DATOS DISPONIBLES
+</div>
+
+<div
+class="data-box"
+id="data">
+</div>
+
+</div>
+
+
+<div class="block">
+
+<div class="block-title">
+🎯 DESARROLLO DE LA MISIÓN
+</div>
+
+<div id="phases">
+</div>
+
+</div>
+
+
+<div class="block">
+
+<div class="block-title">
+🧠 PREGUNTA DE PENSAMIENTO
+</div>
+
+<div
+class="question"
+id="question">
+</div>
+
+</div>
+
+
+<div class="block">
+
+<div class="block-title">
+📄 PRODUCTO / EVIDENCIA
+</div>
+
+<div
+class="evidence"
+id="evidence">
+</div>
+
+</div>
+
+
+<button
+class="complete"
+id="complete"
+onclick="completeMission()">
+
+✓ COMPLETAR MISIÓN · +20 XP
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<footer>
+
+<strong>
+PROYECTO GÉNESIS
+</strong>
+
+<br><br>
+
+Electromagnetismo · Física · Resolución de problemas
+
+<br><br>
+
+Analiza · Modela · Calcula · Interpreta · Transfiere
+
+</footer>
+
+
+<script>
+
+/* ============================================================
+DATOS GENERALES
+============================================================ */
+
+const completed =
+JSON.parse(
+localStorage.getItem("genesisElectroCompleted") || "[]"
+);
+
+let currentKey=null;
+
+
+/* ============================================================
+NOTICIAS
+============================================================ */
+
+const news=[
+
+[
+"Electromagnetismo en la automatización",
+"Los sensores, motores y sistemas de control industrial dependen de fenómenos electromagnéticos.",
+"Actualidad tecnológica"
+],
+
+[
+"Electrónica y carga eléctrica",
+"La manipulación controlada de cargas eléctricas permite construir sensores y dispositivos electrónicos.",
+"Tecnología"
+],
+
+[
+"Campos eléctricos",
+"Los modelos de campo permiten describir interacciones eléctricas incluso cuando las cargas no están en contacto.",
+"Física aplicada"
+],
+
+[
+"Potencial eléctrico",
+"La diferencia de potencial constituye una magnitud fundamental para comprender circuitos y sistemas eléctricos.",
+"Física aplicada"
+],
+
+[
+"Capacitores en tecnología",
+"Los capacitores se utilizan para almacenar energía, filtrar señales y controlar respuestas temporales.",
+"Electrónica"
+],
+
+[
+"Corriente eléctrica",
+"La corriente eléctrica permite transferir energía y hacer funcionar motores, actuadores y sistemas de control.",
+"Ingeniería"
+],
+
+[
+"Redes eléctricas",
+"Los sistemas eléctricos requieren analizar resistencia, potencia y distribución de corriente.",
+"Sistemas eléctricos"
+],
+
+[
+"Instrumentación eléctrica",
+"La medición correcta de corriente y diferencia de potencial es fundamental para diagnosticar sistemas.",
+"Instrumentación"
+],
+
+[
+"Magnetismo y motores",
+"Los campos magnéticos son esenciales en motores, generadores y actuadores electromagnéticos.",
+"Electromagnetismo"
+],
+
+[
+"Generación eléctrica",
+"La inducción electromagnética constituye uno de los principios fundamentales de los generadores.",
+"Energía"
+],
+
+[
+"Ondas electromagnéticas",
+"Las ondas electromagnéticas permiten transportar energía e información sin necesidad de un medio material.",
+"Comunicaciones"
+],
+
+[
+"Óptica tecnológica",
+"La luz permite desarrollar sensores, cámaras, fibras ópticas e instrumentos de inspección.",
+"Óptica"
+],
+
+[
+"Interferencia y difracción",
+"Los fenómenos ondulatorios permiten analizar la estructura de la luz y desarrollar técnicas ópticas.",
+"Óptica física"
+],
+
+[
+"Física cuántica",
+"El estudio de la interacción entre luz y materia condujo al desarrollo de modelos cuánticos.",
+"Física moderna"
+],
+
+[
+"Física moderna",
+"La física moderna amplió los modelos clásicos para explicar fenómenos relacionados con luz y materia.",
+"Física"
+]
+
+];
+
+
+/* ============================================================
+ACTIVIDADES
+Cada actividad = 90 min
+============================================================ */
+
+const A={};
+
+
+/* ---------- SEMANA 1 ---------- */
+
+A["Electromagnetismo"]={
+case:"Una línea automatizada utiliza sensores inductivos, motores eléctricos y actuadores para transportar piezas metálicas. El responsable de mantenimiento desea explicar qué parte de estos sistemas puede entenderse mediante electromagnetismo.",
+data:[
+["Motor eléctrico","24 V"],
+["Corriente nominal","3,0 A"],
+["Sensor inductivo","24 V"],
+["Frecuencia de control","60 Hz"]
+],
+question:"¿Qué fenómenos eléctricos y magnéticos deben interactuar para que un sistema automatizado pueda detectar, mover y controlar objetos?",
+evidence:"Elabore un mapa conceptual que conecte carga eléctrica, campo eléctrico, corriente, campo magnético e inducción. Incluya al menos tres dispositivos industriales.",
+phases:[
+["1 · ACTIVACIÓN","10 min","Observe los datos e identifique cuáles corresponden a fenómenos eléctricos y cuáles podrían relacionarse con magnetismo."],
+["2 · MODELO","15 min","Construya un esquema del sistema e indique dónde aparecen cargas, corriente y campos."],
+["3 · ANÁLISIS","25 min","Explique físicamente el funcionamiento de cada componente."],
+["4 · TRANSFERENCIA","20 min","Seleccione un dispositivo industrial adicional y explique qué fenómeno electromagnético utiliza."],
+["5 · ARGUMENTACIÓN","10 min","Defienda por qué el electromagnetismo es indispensable en la automatización."],
+["6 · EVIDENCIA","10 min","Organice el mapa conceptual y redacte una conclusión."]
+]};
+
+A["Carga eléctrica"]={
+case:"Un sensor electrostático registra una carga de −4,8 μC después de una operación de separación de materiales. El equipo necesita interpretar qué significa esa medición.",
+data:[
+["Carga medida","−4,8 μC"],
+["Carga elemental","1,60 × 10⁻¹⁹ C"],
+["Masa del objeto","0,50 kg"]
+],
+question:"¿Cuántos electrones adicionales representa la carga registrada y qué significa físicamente el signo negativo?",
+evidence:"Presente cálculo, interpretación microscópica y una representación del exceso de electrones.",
+phases:[
+["1 · PREDICCIÓN","10 min","Antes de calcular, determine si el objeto posee exceso o déficit de electrones."],
+["2 · UNIDADES","15 min","Convierta la carga a coulomb y establezca la relación entre carga total y carga elemental."],
+["3 · CÁLCULO","25 min","Determine el número de electrones transferidos."],
+["4 · INTERPRETACIÓN","20 min","Explique qué significa el resultado y por qué la masa prácticamente no cambia."],
+["5 · EVALUACIÓN","10 min","Estime si el resultado es razonable considerando la magnitud de la carga elemental."],
+["6 · EVIDENCIA","10 min","Entregue procedimiento y conclusión."]
+]};
+
+A["Conductores y aisladores"]={
+case:"Se debe diseñar un cable para transportar corriente hasta un motor y, simultáneamente, evitar que una persona entre en contacto con el conductor.",
+data:[
+["Conductor disponible","Cobre"],
+["Aislante 1","PVC"],
+["Aislante 2","Vidrio"],
+["Corriente del motor","8,0 A"]
+],
+question:"¿Por qué los electrones pueden desplazarse con facilidad en un conductor mientras un aislador limita su movimiento?",
+evidence:"Elabore una recomendación técnica justificando la selección del conductor y del aislante.",
+phases:[
+["1 · OBSERVACIÓN","10 min","Clasifique los materiales según su comportamiento eléctrico."],
+["2 · MODELO MICROSCÓPICO","15 min","Explique el movimiento de electrones en conductores y aisladores."],
+["3 · ANÁLISIS","25 min","Analice qué ocurriría si se utilizara un aislante como conductor."],
+["4 · DISEÑO","20 min","Proponga la estructura de un cable para el motor."],
+["5 · JUSTIFICACIÓN","10 min","Defienda la selección mediante propiedades físicas."],
+["6 · EVIDENCIA","10 min","Entregue esquema y recomendación."]
+]};
+
+
+/* ---------- SEMANA 2 ---------- */
+
+A["Ley de Coulomb"]={
+case:"Dos partículas cargadas se encuentran dentro de un sistema de posicionamiento electrostático. Se desea determinar la fuerza entre ellas.",
+data:[
+["q₁","+4,0 μC"],
+["q₂","−6,0 μC"],
+["r","0,30 m"],
+["k","8,99 × 10⁹ N·m²/C²"]
+],
+question:"Si la distancia se duplica, ¿la fuerza se reduce a la mitad o a una cuarta parte? Justifique antes de calcular.",
+evidence:"Entregue diagrama de fuerzas, conversión de unidades, cálculo y análisis de la dependencia con la distancia.",
+phases:[
+["1 · PREDICCIÓN","10 min","Determine si la interacción será atractiva o repulsiva."],
+["2 · REPRESENTACIÓN","15 min","Dibuje las cargas y los vectores de fuerza."],
+["3 · CÁLCULO","25 min","Aplique la ley de Coulomb y obtenga la magnitud."],
+["4 · VARIACIÓN","20 min","Calcule nuevamente la fuerza cuando r = 0,60 m."],
+["5 · ANÁLISIS","10 min","Compare ambos resultados y explique la relación cuadrática."],
+["6 · EVIDENCIA","10 min","Organice la solución completa."]
+]};
+
+A["Carga y materia"]={
+case:"Una película plástica adquiere carga durante el desplazamiento sobre una banda transportadora.",
+data:[
+["Carga final","−8,0 nC"],
+["Carga elemental","1,60 × 10⁻¹⁹ C"],
+["Velocidad de la banda","1,5 m/s"]
+],
+question:"¿Qué partículas se transfieren durante la electrización por contacto o fricción y cómo se conserva la carga?",
+evidence:"Elabore un modelo microscópico de la transferencia de electrones.",
+phases:[
+["1 · ANÁLISIS","10 min","Interprete el signo de la carga."],
+["2 · MODELO","15 min","Explique qué ocurre a escala atómica."],
+["3 · CÁLCULO","25 min","Determine el número de electrones transferidos."],
+["4 · CONSERVACIÓN","20 min","Explique qué ocurre con la carga del segundo material."],
+["5 · CONTEXTO","10 min","Analice una posible consecuencia industrial."],
+["6 · EVIDENCIA","10 min","Entregue esquema y cálculo."]
+]};
+
+A["Campo eléctrico y su intensidad"]={
+case:"Una carga de prueba colocada cerca de un componente experimenta una fuerza eléctrica.",
+data:[
+["Carga de prueba","+2,0 μC"],
+["Fuerza","0,012 N"],
+["Distancia","0,25 m"]
+],
+question:"¿Qué representa el campo eléctrico en el punto donde se coloca la carga de prueba?",
+evidence:"Calcule el campo, represéntelo vectorialmente y explique qué ocurriría con una carga negativa.",
+phases:[
+["1 · PREDICCIÓN","10 min","Prediga la dirección de la fuerza sobre una carga positiva."],
+["2 · PRINCIPIO","15 min","Identifique la relación entre fuerza, carga y campo."],
+["3 · CÁLCULO","25 min","Determine la intensidad del campo."],
+["4 · CONTRASTE","20 min","Analice una carga de prueba negativa."],
+["5 · INTERPRETACIÓN","10 min","Explique por qué el campo existe independientemente de la carga de prueba."],
+["6 · EVIDENCIA","10 min","Entregue diagrama y explicación."]
+]};
+
+
+/* ---------- SEMANA 3 ---------- */
+
+A["Líneas de fuerza"]={
+case:"Un componente posee una distribución de carga positiva y negativa. Un estudiante propone representar el campo mediante líneas.",
+data:[
+["Carga positiva","+5 μC"],
+["Carga negativa","−5 μC"],
+["Separación","0,20 m"]
+],
+question:"¿Cómo puede un dibujo de líneas de campo comunicar dirección e intensidad sin mostrar directamente las fuerzas?",
+evidence:"Construya un diagrama de líneas de campo y explique tres características.",
+phases:[
+["1 · PREDICCIÓN","10 min","Determine cómo deberían orientarse las líneas."],
+["2 · REPRESENTACIÓN","15 min","Dibuje el sistema."],
+["3 · ANÁLISIS","25 min","Interprete dirección y densidad de líneas."],
+["4 · COMPARACIÓN","20 min","Compare regiones cercanas y alejadas."],
+["5 · ARGUMENTACIÓN","10 min","Explique por qué las líneas no pueden cruzarse."],
+["6 · EVIDENCIA","10 min","Entregue el diagrama final."]
+]};
+
+A["Flujo del campo eléctrico"]={
+case:"Una superficie plana forma parte de un sensor eléctrico y se encuentra dentro de un campo uniforme.",
+data:[
+["E","500 N/C"],
+["Área","0,020 m²"],
+["Ángulo","0°"]
+],
+question:"¿Qué cambia físicamente cuando la superficie gira y deja de estar perpendicular al campo?",
+evidence:"Calcule el flujo para 0° y 60° y explique la diferencia.",
+phases:[
+["1 · PREDICCIÓN","10 min","Determine cuál orientación producirá mayor flujo."],
+["2 · MODELO","15 min","Escriba la expresión del flujo."],
+["3 · CÁLCULO","25 min","Calcule ambos flujos."],
+["4 · REPRESENTACIÓN","20 min","Dibuje las dos orientaciones."],
+["5 · INTERPRETACIÓN","10 min","Explique el papel del ángulo."],
+["6 · EVIDENCIA","10 min","Entregue cálculos y dibujos."]
+]};
+
+A["Ley de Gauss"]={
+case:"Una superficie esférica imaginaria rodea una carga puntual ubicada en el centro. Se desea determinar el flujo total.",
+data:[
+["Q encerrada","+3,0 μC"],
+["ε₀","8,85 × 10⁻¹² C²/(N·m²)"],
+["Radio","0,20 m"]
+],
+question:"¿Por qué el flujo total depende de la carga encerrada y no directamente del radio de la superficie gaussiana?",
+evidence:"Calcule el flujo y explique el papel de la simetría.",
+phases:[
+["1 · PREDICCIÓN","10 min","Prediga qué ocurre con el flujo si aumenta el radio."],
+["2 · PRINCIPIO","15 min","Escriba la ley de Gauss."],
+["3 · CÁLCULO","25 min","Determine el flujo total."],
+["4 · SIMETRÍA","20 min","Explique por qué una esfera resulta conveniente."],
+["5 · CONTRASTE","10 min","Compare dos radios diferentes."],
+["6 · EVIDENCIA","10 min","Entregue análisis."]
+]};
+
+
+/* ---------- SEMANA 4 ---------- */
+
+A["Ley de Gauss y ley de Coulomb: algunas aplicaciones"]={
+case:"Una distribución de carga posee simetría esférica y debe analizarse mediante dos modelos.",
+data:[
+["Q","+2,5 μC"],
+["r","0,50 m"],
+["k","8,99 × 10⁹ N·m²/C²"],
+["ε₀","8,85 × 10⁻¹² C²/(N·m²)"]
+],
+question:"¿Cuándo ofrece la ley de Gauss una ventaja frente al uso directo de la ley de Coulomb?",
+evidence:"Compare ambos enfoques y justifique cuál utilizaría en una situación de alta simetría.",
+phases:[
+["1 · ANÁLISIS","10 min","Identifique la simetría."],
+["2 · MODELADO","15 min","Plantee ambos modelos."],
+["3 · CÁLCULO","25 min","Obtenga el campo mediante Coulomb."],
+["4 · GAUSS","20 min","Explique cómo se obtendría mediante Gauss."],
+["5 · DECISIÓN","10 min","Justifique qué método resulta más eficiente."],
+["6 · EVIDENCIA","10 min","Entregue comparación."]
+]};
+
+A["Potencial eléctrico"]={
+case:"Una carga puntual produce un potencial eléctrico en una zona de medición.",
+data:[
+["Q","+6,0 μC"],
+["r","0,40 m"],
+["k","8,99 × 10⁹ N·m²/C²"]
+],
+question:"¿Cómo puede existir un potencial eléctrico en un punto aunque no haya una carga de prueba allí?",
+evidence:"Calcule el potencial y explique su diferencia conceptual con el campo eléctrico.",
+phases:[
+["1 · CONCEPTO","10 min","Explique qué significa potencial."],
+["2 · ECUACIÓN","15 min","Seleccione la expresión apropiada."],
+["3 · CÁLCULO","25 min","Determine V."],
+["4 · VARIACIÓN","20 min","Calcule V si la distancia se duplica."],
+["5 · INTERPRETACIÓN","10 min","Compare potencial y campo."],
+["6 · EVIDENCIA","10 min","Entregue respuesta."]
+]};
+
+A["Potencial debido a una carga punto"]={
+case:"Un punto de inspección se encuentra cerca de una carga negativa.",
+data:[
+["Q","−8,0 μC"],
+["r₁","0,25 m"],
+["r₂","0,50 m"],
+["k","8,99 × 10⁹ N·m²/C²"]
+],
+question:"¿Qué información física proporciona el signo del potencial?",
+evidence:"Calcule el potencial en las dos posiciones y explique el significado del signo.",
+phases:[
+["1 · PREDICCIÓN","10 min","Prediga el signo."],
+["2 · MODELADO","15 min","Escriba la ecuación."],
+["3 · CÁLCULO","25 min","Calcule ambos valores."],
+["4 · COMPARACIÓN","20 min","Analice el efecto de la distancia."],
+["5 · INTERPRETACIÓN","10 min","Explique el signo."],
+["6 · EVIDENCIA","10 min","Entregue solución."]
+]};
+
+A["Potencial debido a un dipolo"]={
+case:"Dos cargas iguales y opuestas forman un dipolo utilizado para modelar una distribución eléctrica.",
+data:[
+["q","±3,0 μC"],
+["Separación","0,10 m"],
+["Punto P","0,40 m del centro"],
+["k","8,99 × 10⁹ N·m²/C²"]
+],
+question:"¿Por qué el potencial producido por un dipolo puede ser cero en determinados puntos aunque el campo no sea cero?",
+evidence:"Realice un esquema y analice la suma algebraica de los potenciales.",
+phases:[
+["1 · REPRESENTACIÓN","10 min","Dibuje el dipolo y el punto P."],
+["2 · DISTANCIAS","15 min","Determine las distancias a cada carga."],
+["3 · CÁLCULO","25 min","Calcule el potencial total."],
+["4 · SIMETRÍA","20 min","Analice un punto sobre el eje perpendicular."],
+["5 · CONTRASTE","10 min","Explique diferencia entre V y E."],
+["6 · EVIDENCIA","10 min","Entregue esquema y análisis."]
+]};
+
+
+/* ---------- SEMANA 5 ---------- */
+
+A["Generador electrostático"]={
+case:"Una esfera conductora de un generador electrostático acumula carga.",
+data:[
+["Q","2,0 μC"],
+["R","0,15 m"],
+["k","8,99 × 10⁹ N·m²/C²"]
+],
+question:"¿Qué estrategia permitiría aumentar el potencial de la esfera sin cambiar su material?",
+evidence:"Calcule el potencial y proponga dos modificaciones físicas justificadas.",
+phases:[
+["1 · PREDICCIÓN","10 min","Determine qué variables pueden modificar V."],
+["2 · MODELO","15 min","Relacione carga, radio y potencial."],
+["3 · CÁLCULO","25 min","Determine el potencial."],
+["4 · DISEÑO","20 min","Analice dos estrategias para aumentar V."],
+["5 · EVALUACIÓN","10 min","Determine cuál sería físicamente más eficiente."],
+["6 · EVIDENCIA","10 min","Entregue propuesta."]
+]};
+
+A["Capacitancia y su cálculo"]={
+case:"Un capacitor de un sistema de control almacena energía para estabilizar el suministro.",
+data:[
+["C","220 μF"],
+["V","24 V"],
+["Carga elemental","1,60 × 10⁻¹⁹ C"]
+],
+question:"Si el voltaje aplicado aumenta al doble, ¿qué ocurre con la carga almacenada en un capacitor ideal de capacitancia constante?",
+evidence:"Calcule la carga inicial y final y explique la proporcionalidad.",
+phases:[
+["1 · PREDICCIÓN","10 min","Prediga la relación Q-V."],
+["2 · MODELO","15 min","Identifique la ecuación."],
+["3 · CÁLCULO","25 min","Calcule Q."],
+["4 · ESCENARIO","20 min","Determine Q cuando V = 48 V."],
+["5 · ENERGÍA","10 min","Explique cualitativamente cómo cambia la energía."],
+["6 · EVIDENCIA","10 min","Entregue análisis."]
+]};
+
+A["Dieléctricos"]={
+case:"Se coloca un material dieléctrico entre las placas de un capacitor.",
+data:[
+["C inicial","100 μF"],
+["V","12 V"],
+["κ","4,0"]
+],
+question:"¿Qué ocurre con la capacitancia cuando el dieléctrico ocupa completamente el espacio entre las placas?",
+evidence:"Calcule la nueva capacitancia y la carga almacenada a voltaje constante.",
+phases:[
+["1 · PREDICCIÓN","10 min","Prediga el efecto de κ."],
+["2 · MODELO","15 min","Relacione C y κ."],
+["3 · CÁLCULO","25 min","Determine la nueva capacitancia."],
+["4 · CARGA","20 min","Calcule la carga."],
+["5 · MICROSCOPÍA","10 min","Explique polarización."],
+["6 · EVIDENCIA","10 min","Entregue comparación."]
+]};
+
+A["Fuerza electromotriz"]={
+case:"Una batería alimenta un sistema que presenta una resistencia interna no despreciable.",
+data:[
+["ε","24 V"],
+["r","0,50 Ω"],
+["I","2,0 A"],
+["R externa","11,5 Ω"]
+],
+question:"¿Por qué el voltaje terminal de una fuente real puede ser menor que su fuerza electromotriz?",
+evidence:"Determine el voltaje terminal y explique la función de la resistencia interna.",
+phases:[
+["1 · MODELO","10 min","Dibuje el circuito equivalente."],
+["2 · RELACIONES","15 min","Identifique las caídas de potencial."],
+["3 · CÁLCULO","25 min","Calcule V terminal."],
+["4 · POTENCIA","20 min","Determine la potencia entregada a la carga."],
+["5 · INTERPRETACIÓN","10 min","Explique la diferencia ε-V."],
+["6 · EVIDENCIA","10 min","Entregue solución."]
+]};
+
+
+/* ---------- SEMANA 6 ---------- */
+
+A["Cálculo de corriente"]={
+case:"Una batería transfiere carga a un sistema electrónico durante un intervalo de operación.",
+data:[
+["Carga","360 C"],
+["Tiempo","120 s"]
+],
+question:"¿Qué significa físicamente una corriente de 3 A?",
+evidence:"Calcule la corriente y determine la carga transferida durante 5 minutos.",
+phases:[
+["1 · ESTIMACIÓN","10 min","Estime el orden de magnitud."],
+["2 · MODELO","15 min","Seleccione I = ΔQ/Δt."],
+["3 · CÁLCULO","25 min","Calcule la corriente."],
+["4 · PREDICCIÓN","20 min","Determine carga en 5 min."],
+["5 · INTERPRETACIÓN","10 min","Explique el significado."],
+["6 · EVIDENCIA","10 min","Entregue cálculos."]
+]};
+
+A["Diferencias de potencial"]={
+case:"Dos puntos de un circuito presentan diferentes potenciales.",
+data:[
+["V_A","18 V"],
+["V_B","6 V"],
+["q","2,0 C"]
+],
+question:"¿Qué cantidad de energía por unidad de carga representa una diferencia de potencial de 12 V?",
+evidence:"Calcule la diferencia de potencial y el trabajo para trasladar la carga.",
+phases:[
+["1 · CONCEPTO","10 min","Interprete voltios como energía por carga."],
+["2 · SIGNOS","15 min","Defina la dirección del desplazamiento."],
+["3 · CÁLCULO","25 min","Calcule ΔV y trabajo."],
+["4 · ENERGÍA","20 min","Analice el intercambio energético."],
+["5 · APLICACIÓN","10 min","Relacione con una batería."],
+["6 · EVIDENCIA","10 min","Entregue solución."]
+]};
+
+A["Corriente y densidad de corriente"]={
+case:"Un conductor transporta corriente hacia un actuador.",
+data:[
+["I","8,0 A"],
+["Radio","2,0 mm"]
+],
+question:"¿Qué sucede con la densidad de corriente si se utiliza un conductor cuyo radio es la mitad?",
+evidence:"Calcule la densidad inicial y analice el cambio al reducir el radio.",
+phases:[
+["1 · PREDICCIÓN","10 min","Prediga el efecto del radio."],
+["2 · ÁREA","15 min","Calcule el área transversal."],
+["3 · DENSIDAD","25 min","Determine J."],
+["4 · CAMBIO","20 min","Repita para r/2."],
+["5 · INTERPRETACIÓN","10 min","Explique el aumento."],
+["6 · EVIDENCIA","10 min","Entregue comparación."]
+]};
+
+
+/* ---------- SEMANA 7 ---------- */
+
+A["Resistencia, resistividad y conductividad"]={
+case:"Se diseña una conexión de cobre para transportar corriente hasta una máquina.",
+data:[
+["L","12 m"],
+["A","2,5 mm²"],
+["ρ cobre","1,68 × 10⁻⁸ Ω·m"]
+],
+question:"¿Qué ocurre con la resistencia si se duplica la longitud manteniendo el área?",
+evidence:"Calcule la resistencia y explique la dependencia con longitud y área.",
+phases:[
+["1 · VARIABLES","10 min","Identifique factores que afectan R."],
+["2 · UNIDADES","15 min","Convierta el área a m²."],
+["3 · CÁLCULO","25 min","Determine R."],
+["4 · ESCENARIO","20 min","Analice L = 24 m."],
+["5 · CONDUCTIVIDAD","10 min","Relacione ρ y σ."],
+["6 · EVIDENCIA","10 min","Entregue análisis."]
+]};
+
+A["Intercambios de energía en un circuito eléctrico"]={
+case:"Una resistencia se utiliza como elemento calefactor.",
+data:[
+["V","120 V"],
+["R","24 Ω"],
+["t","300 s"]
+],
+question:"¿Cuánta energía eléctrica se transforma en calor durante la operación?",
+evidence:"Calcule corriente, potencia y energía y explique la transformación energética.",
+phases:[
+["1 · ESTIMACIÓN","10 min","Prediga la potencia aproximada."],
+["2 · MODELO","15 min","Seleccione las relaciones apropiadas."],
+["3 · CÁLCULO","25 min","Calcule I y P."],
+["4 · ENERGÍA","20 min","Determine E."],
+["5 · INTERPRETACIÓN","10 min","Explique la transformación."],
+["6 · EVIDENCIA","10 min","Entregue solución."]
+]};
+
+A["Redes eléctricas"]={
+case:"Una red de control contiene dos resistencias en paralelo conectadas en serie con una tercera.",
+data:[
+["R₁","10 Ω"],
+["R₂","20 Ω"],
+["R₃","15 Ω"],
+["V","30 V"]
+],
+question:"¿Por qué la resistencia equivalente del paralelo es menor que cualquiera de las resistencias individuales?",
+evidence:"Dibuje la red, determine Req y la corriente total.",
+phases:[
+["1 · REPRESENTACIÓN","10 min","Dibuje correctamente el circuito."],
+["2 · PARALELO","15 min","Determine la resistencia equivalente."],
+["3 · TOTAL","25 min","Incluya R₃."],
+["4 · CORRIENTE","20 min","Calcule la corriente total."],
+["5 · RAZONAMIENTO","10 min","Explique el resultado."],
+["6 · EVIDENCIA","10 min","Entregue circuito y cálculos."]
+]};
+
+
+/* ---------- SEMANA 8 ---------- */
+
+A["Medición de corrientes y de diferencias de potencial"]={
+case:"Un técnico debe comprobar experimentalmente un circuito antes de ponerlo en funcionamiento.",
+data:[
+["Fuente","10 V"],
+["R","50 Ω"],
+["Corriente esperada","0,20 A"]
+],
+question:"¿Por qué un amperímetro debe conectarse en serie y un voltímetro en paralelo?",
+evidence:"Dibuje las conexiones correctas y explique qué error ocurriría al invertirlas.",
+phases:[
+["1 · PREDICCIÓN","10 min","Indique dónde colocaría cada instrumento."],
+["2 · MODELO","15 min","Relacione instrumentos con sus resistencias internas ideales."],
+["3 · CÁLCULO","25 min","Compruebe la corriente mediante Ohm."],
+["4 · MEDICIÓN","20 min","Diseñe una secuencia de medición."],
+["5 · SEGURIDAD","10 min","Identifique un posible error."],
+["6 · EVIDENCIA","10 min","Entregue diagrama."]
+]};
+
+A["El potenciómetro"]={
+case:"Un potenciómetro controla una señal de salida en un sistema de regulación.",
+data:[
+["R total","10 kΩ"],
+["V entrada","12 V"],
+["Posición","40 %"]
+],
+question:"¿Cómo puede un componente pasivo controlar una tensión de salida?",
+evidence:"Modele el potenciómetro como divisor de tensión y calcule la salida ideal.",
+phases:[
+["1 · MODELO","10 min","Represente el potenciómetro."],
+["2 · VARIABLES","15 min","Determine la fracción de resistencia."],
+["3 · CÁLCULO","25 min","Calcule V salida."],
+["4 · APLICACIÓN","20 min","Proponga una aplicación industrial."],
+["5 · LIMITACIONES","10 min","Analice el modelo ideal."],
+["6 · EVIDENCIA","10 min","Entregue esquema."]
+]};
+
+A["Circuitos RC"]={
+case:"Un circuito RC se utiliza para retrasar la respuesta de un sistema de control.",
+data:[
+["R","20 kΩ"],
+["C","100 μF"],
+["V","12 V"]
+],
+question:"¿Qué significa físicamente que después de un tiempo de aproximadamente 5τ el capacitor esté prácticamente cargado?",
+evidence:"Calcule τ y 5τ y explique la evolución temporal.",
+phases:[
+["1 · PREDICCIÓN","10 min","Prediga si el capacitor responde rápido o lentamente."],
+["2 · MODELO","15 min","Identifique τ = RC."],
+["3 · CÁLCULO","25 min","Determine τ y 5τ."],
+["4 · GRÁFICA","20 min","Dibuje cualitativamente Vc(t)."],
+["5 · INTERPRETACIÓN","10 min","Explique el significado de τ."],
+["6 · EVIDENCIA","10 min","Entregue gráfica y cálculo."]
+]};
+
+
+/* ---------- SEMANA 9 ---------- */
+
+A["El campo magnético"]={
+case:"Un conductor recto transporta corriente cerca de un sensor.",
+data:[
+["I","8,0 A"],
+["r","0,05 m"],
+["μ₀","4π × 10⁻⁷ T·m/A"]
+],
+question:"¿Cómo cambiaría el campo si la corriente se duplica y la distancia se reduce a la mitad?",
+evidence:"Calcule el campo inicial y analice cuantitativamente el segundo escenario.",
+phases:[
+["1 · DIRECCIÓN","10 min","Utilice la regla de la mano derecha."],
+["2 · MODELO","15 min","Seleccione la expresión para conductor largo."],
+["3 · CÁLCULO","25 min","Determine B."],
+["4 · ESCENARIO","20 min","Analice I×2 y r/2."],
+["5 · INTERPRETACIÓN","10 min","Explique la sensibilidad del campo."],
+["6 · EVIDENCIA","10 min","Entregue diagramas."]
+]};
+
+A["Ley de Ampère"]={
+case:"Una bobina larga forma el núcleo de un electroimán industrial.",
+data:[
+["N","400 espiras"],
+["I","2,0 A"],
+["L","0,20 m"],
+["μ₀","4π × 10⁻⁷ T·m/A"]
+],
+question:"¿Cómo puede fortalecerse el campo del solenoide sin aumentar la corriente?",
+evidence:"Calcule el campo y proponga dos modificaciones de diseño.",
+phases:[
+["1 · MODELO","10 min","Identifique las variables."],
+["2 · DENSIDAD","15 min","Determine N/L."],
+["3 · CÁLCULO","25 min","Calcule B."],
+["4 · DISEÑO","20 min","Analice cambios en N y L."],
+["5 · EVALUACIÓN","10 min","Compare estrategias."],
+["6 · EVIDENCIA","10 min","Entregue propuesta."]
+]};
+
+A["Líneas de inducción magnética"]={
+case:"Un imán permanente se coloca cerca de una región de sensores.",
+data:[
+["Campo máximo","0,08 T"],
+["Área de observación","0,010 m²"]
+],
+question:"¿Qué información puede inferirse de la densidad de líneas de campo magnético?",
+evidence:"Construya un mapa de líneas y explique su dirección y densidad.",
+phases:[
+["1 · REPRESENTACIÓN","10 min","Dibuje el imán."],
+["2 · DIRECCIÓN","15 min","Indique el sentido de las líneas."],
+["3 · DENSIDAD","25 min","Represente regiones de campo fuerte."],
+["4 · COMPARACIÓN","20 min","Compare cerca y lejos del imán."],
+["5 · ANÁLISIS","10 min","Explique qué representa el modelo."],
+["6 · EVIDENCIA","10 min","Entregue mapa."]
+]};
+
+A["La ley de Biot-Savart"]={
+case:"Se desea estimar el campo magnético producido por un conductor recto.",
+data:[
+["I","5,0 A"],
+["r","0,10 m"],
+["μ₀","4π × 10⁻⁷ T·m/A"]
+],
+question:"¿Cómo depende el campo magnético de la corriente y de la distancia?",
+evidence:"Obtenga el campo para el conductor y analice dos cambios de las variables.",
+phases:[
+["1 · PREDICCIÓN","10 min","Prediga tendencias."],
+["2 · MODELO","15 min","Relacione Biot-Savart con el caso."],
+["3 · CÁLCULO","25 min","Determine B."],
+["4 · VARIACIÓN","20 min","Analice I×2 y r×2."],
+["5 · INTERPRETACIÓN","10 min","Compare resultados."],
+["6 · EVIDENCIA","10 min","Entregue tabla."]
+]};
+
+
+/* ---------- SEMANA 10 ---------- */
+
+A["Ley de Faraday"]={
+case:"Una bobina de un generador experimenta un cambio de flujo magnético.",
+data:[
+["N","100"],
+["ΔΦ","0,040 Wb"],
+["Δt","0,020 s"]
+],
+question:"¿Qué variable debe modificarse para aumentar la fuerza electromotriz inducida?",
+evidence:"Calcule la FEM y analice dos formas de aumentarla.",
+phases:[
+["1 · PREDICCIÓN","10 min","Identifique las variables relevantes."],
+["2 · MODELO","15 min","Escriba la ley de Faraday."],
+["3 · CÁLCULO","25 min","Determine ε."],
+["4 · DISEÑO","20 min","Analice cambios en N y tiempo."],
+["5 · LÍMITE","10 min","Explique el papel del cambio de flujo."],
+["6 · EVIDENCIA","10 min","Entregue propuesta."]
+]};
+
+A["Ley de Lenz"]={
+case:"Un imán se acerca a una bobina conductora.",
+data:[
+["ΔΦ","0,015 Wb"],
+["Δt","0,005 s"],
+["N","200"]
+],
+question:"¿Por qué la corriente inducida se opone al cambio de flujo y no necesariamente al campo magnético original?",
+evidence:"Determine la FEM y explique la dirección de la corriente mediante un esquema.",
+phases:[
+["1 · PREDICCIÓN","10 min","Determine la respuesta de la bobina."],
+["2 · FLUJO","15 min","Identifique el cambio."],
+["3 · CÁLCULO","25 min","Calcule la FEM."],
+["4 · DIRECCIÓN","20 min","Utilice la ley de Lenz."],
+["5 · ENERGÍA","10 min","Relacione con conservación de energía."],
+["6 · EVIDENCIA","10 min","Entregue esquema."]
+]};
+
+A["Inducción: estudio cuantitativo"]={
+case:"Una bobina de generación cambia su flujo magnético durante una operación.",
+data:[
+["N","500"],
+["Φ inicial","0,010 Wb"],
+["Φ final","0,002 Wb"],
+["Δt","0,040 s"]
+],
+question:"¿Qué ocurre con la FEM inducida si el mismo cambio de flujo ocurre en la mitad del tiempo?",
+evidence:"Calcule ambas FEM y explique cuantitativamente la relación.",
+phases:[
+["1 · ANÁLISIS","10 min","Determine ΔΦ."],
+["2 · MODELO","15 min","Escriba Faraday."],
+["3 · CÁLCULO","25 min","Calcule la primera FEM."],
+["4 · ESCENARIO","20 min","Repita para Δt/2."],
+["5 · COMPARACIÓN","10 min","Interprete la diferencia."],
+["6 · EVIDENCIA","10 min","Entregue resultados."]
+]};
+
+
+/* ---------- SEMANA 11 ---------- */
+
+A["Inductancia"]={
+case:"Una bobina se encuentra en un circuito donde la corriente cambia rápidamente.",
+data:[
+["L","0,50 H"],
+["ΔI","4,0 A"],
+["Δt","0,020 s"]
+],
+question:"¿Por qué una bobina se opone a los cambios rápidos de corriente?",
+evidence:"Calcule la FEM autoinducida y explique el mecanismo físico.",
+phases:[
+["1 · PREDICCIÓN","10 min","Determine si la FEM será pequeña o grande."],
+["2 · MODELO","15 min","Identifique ε = LΔI/Δt."],
+["3 · CÁLCULO","25 min","Calcule la FEM."],
+["4 · ESCENARIO","20 min","Reduzca Δt a la mitad."],
+["5 · INTERPRETACIÓN","10 min","Explique la oposición al cambio."],
+["6 · EVIDENCIA","10 min","Entregue análisis."]
+]};
+
+A["Propiedades magnéticas de la materia"]={
+case:"Un núcleo ferromagnético se utiliza para concentrar el campo de una bobina.",
+data:[
+["Campo aplicado","0,20 T"],
+["Permeabilidad relativa","500"],
+["Material","Ferromagnético"]
+],
+question:"¿Por qué un núcleo ferromagnético puede modificar significativamente el campo magnético?",
+evidence:"Compare conceptualmente el material con el vacío y explique una aplicación.",
+phases:[
+["1 · OBSERVACIÓN","10 min","Interprete κm."],
+["2 · MODELO","15 min","Relacione permeabilidad y campo."],
+["3 · ANÁLISIS","25 min","Explique el efecto del núcleo."],
+["4 · APLICACIÓN","20 min","Analice un transformador o motor."],
+["5 · LIMITACIONES","10 min","Identifique una posible limitación."],
+["6 · EVIDENCIA","10 min","Entregue comparación."]
+]};
+
+A["Oscilaciones electromagnéticas"]={
+case:"Un circuito LC ideal intercambia energía entre el campo eléctrico del capacitor y el campo magnético del inductor.",
+data:[
+["L","2,0 mH"],
+["C","50 μF"]
+],
+question:"¿Cómo puede un circuito sin una fuente externa mantener una oscilación ideal?",
+evidence:"Calcule frecuencia angular, frecuencia y período y explique el intercambio energético.",
+phases:[
+["1 · PREDICCIÓN","10 min","Prediga si el sistema oscila rápida o lentamente."],
+["2 · MODELO","15 min","Seleccione la ecuación LC."],
+["3 · CÁLCULO","25 min","Determine ω y f."],
+["4 · PERÍODO","20 min","Calcule T."],
+["5 · ENERGÍA","10 min","Explique el intercambio."],
+["6 · EVIDENCIA","10 min","Entregue análisis."]
+]};
+
+A["Ondas electromagnéticas"]={
+case:"Una antena transmite una señal de radio.",
+data:[
+["f","100 MHz"],
+["c","3,00 × 10⁸ m/s"]
+],
+question:"¿Qué longitud de onda corresponde a la señal y qué sucede con ella si aumenta la frecuencia?",
+evidence:"Calcule λ y analice el caso en que la frecuencia se duplica.",
+phases:[
+["1 · ESTIMACIÓN","10 min","Prediga el orden de magnitud."],
+["2 · MODELO","15 min","Use c = fλ."],
+["3 · CÁLCULO","25 min","Determine λ."],
+["4 · CAMBIO","20 min","Analice f×2."],
+["5 · INTERPRETACIÓN","10 min","Explique la relación inversa."],
+["6 · EVIDENCIA","10 min","Entregue conclusión."]
+]};
+
+
+/* ---------- SEMANA 12 ---------- */
+
+A["Naturaleza y propagación de la luz"]={
+case:"Un sensor óptico utiliza una fuente de luz monocromática.",
+data:[
+["f","5,00 × 10¹⁴ Hz"],
+["c","3,00 × 10⁸ m/s"]
+],
+question:"¿Qué información permite obtener la frecuencia de una fuente luminosa?",
+evidence:"Calcule la longitud de onda y explique la naturaleza electromagnética de la luz.",
+phases:[
+["1 · CONCEPTO","10 min","Identifique características de la luz."],
+["2 · MODELO","15 min","Relacione c, f y λ."],
+["3 · CÁLCULO","25 min","Calcule λ."],
+["4 · MEDIO","20 min","Explique qué cambia al entrar a otro medio."],
+["5 · APLICACIÓN","10 min","Relacione con sensores."],
+["6 · EVIDENCIA","10 min","Entregue solución."]
+]};
+
+A["Reflexión y refracción: ondas y superficies planas"]={
+case:"Un haz luminoso incide sobre una superficie transparente.",
+data:[
+["θ₁","40°"],
+["n₁","1,00"],
+["n₂","1,50"]
+],
+question:"¿Por qué el rayo cambia de dirección al pasar de un medio a otro?",
+evidence:"Calcule el ángulo de refracción mediante Snell y construya el diagrama.",
+phases:[
+["1 · PREDICCIÓN","10 min","Determine si el rayo se acerca o aleja de la normal."],
+["2 · REFLEXIÓN","15 min","Determine el ángulo reflejado."],
+["3 · REFRACCIÓN","25 min","Calcule θ₂."],
+["4 · DIAGRAMA","20 min","Construya el esquema."],
+["5 · INTERPRETACIÓN","10 min","Explique el cambio."],
+["6 · EVIDENCIA","10 min","Entregue diagrama."]
+]};
+
+A["Reflexión y refracción: ondas y superficies esféricas"]={
+case:"Una superficie curva forma parte de un sistema óptico industrial.",
+data:[
+["Radio","0,20 m"],
+["n₁","1,00"],
+["n₂","1,50"]
+],
+question:"¿Cómo modifica la curvatura de una superficie la trayectoria de los rayos?",
+evidence:"Construya un esquema comparando una superficie plana con una esférica.",
+phases:[
+["1 · OBSERVACIÓN","10 min","Compare las geometrías."],
+["2 · MODELO","15 min","Identifique normales locales."],
+["3 · ANÁLISIS","25 min","Explique la refracción."],
+["4 · REPRESENTACIÓN","20 min","Dibuje rayos."],
+["5 · APLICACIÓN","10 min","Relacione con lentes."],
+["6 · EVIDENCIA","10 min","Entregue comparación."]
+]};
+
+
+/* ---------- SEMANA 13 ---------- */
+
+A["Interferencias"]={
+case:"Dos ondas luminosas coherentes se superponen.",
+data:[
+["λ","600 nm"],
+["Diferencia de caminos","1,20 μm"]
+],
+question:"¿La diferencia de caminos corresponde a una condición de interferencia constructiva o destructiva?",
+evidence:"Determine la relación entre diferencia de caminos y longitud de onda y justifique.",
+phases:[
+["1 · PREDICCIÓN","10 min","Determine cualitativamente el resultado."],
+["2 · MODELO","15 min","Identifique la condición de interferencia."],
+["3 · CÁLCULO","25 min","Compare Δr y λ."],
+["4 · REPRESENTACIÓN","20 min","Dibuje ondas superpuestas."],
+["5 · INTERPRETACIÓN","10 min","Explique máximos y mínimos."],
+["6 · EVIDENCIA","10 min","Entregue representación."]
+]};
+
+A["Difracción"]={
+case:"Una abertura estrecha permite que la luz llegue a una pantalla.",
+data:[
+["λ","500 nm"],
+["a","0,10 mm"],
+["L","2,0 m"]
+],
+question:"¿Por qué una abertura cuyo tamaño es comparable con la longitud de onda produce difracción significativa?",
+evidence:"Analice la relación λ/a y explique el patrón esperado.",
+phases:[
+["1 · ESTIMACIÓN","10 min","Compare escalas."],
+["2 · MODELO","15 min","Identifique el criterio de difracción."],
+["3 · CÁLCULO","25 min","Calcule la razón λ/a."],
+["4 · PATRÓN","20 min","Dibuje cualitativamente el patrón."],
+["5 · RESOLUCIÓN","10 min","Relacione con resolución óptica."],
+["6 · EVIDENCIA","10 min","Entregue análisis."]
+]};
+
+A["Redes y espectros"]={
+case:"Una red de difracción permite separar componentes de una fuente luminosa.",
+data:[
+["λ","600 nm"],
+["d","2,0 μm"],
+["m","1"]
+],
+question:"¿Por qué diferentes longitudes de onda aparecen en posiciones diferentes?",
+evidence:"Calcule el ángulo de primer orden y explique el principio de separación espectral.",
+phases:[
+["1 · MODELO","10 min","Identifique la ecuación de la red."],
+["2 · UNIDADES","15 min","Convierta las magnitudes."],
+["3 · CÁLCULO","25 min","Calcule θ."],
+["4 · INTERPRETACIÓN","20 min","Analice qué sucede con otra λ."],
+["5 · APLICACIÓN","10 min","Relacione con espectroscopía."],
+["6 · EVIDENCIA","10 min","Entregue solución."]
+]};
+
+A["Polarización"]={
+case:"Dos filtros polarizadores controlan la intensidad de una señal luminosa.",
+data:[
+["I₀","100 W/m²"],
+["θ","60°"]
+],
+question:"¿Cómo cambia la intensidad transmitida al variar el ángulo entre los polarizadores?",
+evidence:"Calcule la intensidad para 60°, 0° y 90° y compare.",
+phases:[
+["1 · PREDICCIÓN","10 min","Prediga los tres casos."],
+["2 · MODELO","15 min","Use la ley de Malus."],
+["3 · CÁLCULO","25 min","Determine intensidades."],
+["4 · TABLA","20 min","Organice los resultados."],
+["5 · INTERPRETACIÓN","10 min","Explique la dependencia angular."],
+["6 · EVIDENCIA","10 min","Entregue tabla y conclusión."]
+]};
+
+
+/* ---------- SEMANA 14 ---------- */
+
+A["Luz y física cuántica"]={
+case:"Una superficie metálica recibe radiación electromagnética y se analiza si puede liberar electrones.",
+data:[
+["f","8,0 × 10¹⁴ Hz"],
+["h","6,626 × 10⁻³⁴ J·s"],
+["φ","2,0 eV"],
+["1 eV","1,602 × 10⁻¹⁹ J"]
+],
+question:"¿Qué evidencia permite distinguir una explicación clásica de una explicación cuántica del efecto fotoeléctrico?",
+evidence:"Calcule la energía del fotón, compare con la función de trabajo y explique el resultado.",
+phases:[
+["1 · PREDICCIÓN","10 min","Determine si la radiación podría liberar electrones."],
+["2 · CONVERSIÓN","15 min","Convierta la función de trabajo a joules."],
+["3 · CÁLCULO","25 min","Calcule E = hf."],
+["4 · COMPARACIÓN","20 min","Compare energía del fotón y función de trabajo."],
+["5 · MODELO","10 min","Explique el fenómeno cuánticamente."],
+["6 · EVIDENCIA","10 min","Entregue análisis."]
+]};
+
+A["Ondas y partículas"]={
+case:"Un haz de electrones se utiliza en un instrumento de análisis. Se estudia su longitud de onda asociada.",
+data:[
+["mₑ","9,11 × 10⁻³¹ kg"],
+["v","2,0 × 10⁶ m/s"],
+["h","6,626 × 10⁻³⁴ J·s"]
+],
+question:"¿Qué significa que una partícula material pueda presentar propiedades ondulatorias?",
+evidence:"Calcule la longitud de onda de De Broglie y compare su escala con dimensiones microscópicas.",
+phases:[
+["1 · PREDICCIÓN","10 min","Estime el orden de magnitud."],
+["2 · MODELO","15 min","Identifique λ = h/p."],
+["3 · CÁLCULO","25 min","Calcule λ."],
+["4 · ESCALA","20 min","Compare con escalas microscópicas."],
+["5 · INTERPRETACIÓN","10 min","Explique la dualidad onda-partícula."],
+["6 · EVIDENCIA","10 min","Entregue cálculo y reflexión."]
+]};
+
+
+/* ---------- SEMANA 15 ---------- */
+
+A["Exposiciones y repaso"]={
+case:"La misión final requiere integrar los conceptos estudiados durante el curso. Cada estudiante o equipo deberá seleccionar un fenómeno electromagnético y demostrar cómo puede explicarse mediante modelos físicos.",
+data:[
+["Tiempo de exposición","8–10 min"],
+["Ecuaciones mínimas","2"],
+["Problemas cuantitativos","1"],
+["Aplicación tecnológica","1"]
+],
+question:"¿Cómo se conectan electricidad, magnetismo, inducción, ondas, luz y física cuántica dentro de una misma descripción física?",
+evidence:"Prepare una exposición de 8–10 minutos, una síntesis escrita, un problema cuantitativo resuelto y una aplicación tecnológica.",
+phases:[
+["1 · SELECCIÓN","10 min","Seleccione un fenómeno y delimite el problema."],
+["2 · INVESTIGACIÓN","15 min","Organice conceptos y ecuaciones."],
+["3 · PROBLEMA","25 min","Construya y resuelva un problema cuantitativo."],
+["4 · APLICACIÓN","20 min","Relacione el fenómeno con tecnología."],
+["5 · PREPARACIÓN","10 min","Organice la exposición."],
+["6 · EVIDENCIA","10 min","Entregue síntesis y presentación."]
+]};
+
+
+/* ============================================================
+SEMANA
+============================================================ */
+
+const weeks=[
+
+{
+w:1,
+title:"Fundamentos del electromagnetismo",
+icon:"⚡",
+contents:[
+"Electromagnetismo",
+"Carga eléctrica",
+"Conductores y aisladores"
+]
+},
+
+{
+w:2,
+title:"Interacción eléctrica",
+icon:"🔋",
+contents:[
+"Ley de Coulomb",
+"Carga y materia",
+"Campo eléctrico y su intensidad"
+]
+},
+
+{
+w:3,
+title:"Campo eléctrico",
+icon:"🌐",
+contents:[
+"Líneas de fuerza",
+"Flujo del campo eléctrico",
+"Ley de Gauss"
+]
+},
+
+{
+w:4,
+title:"Potencial eléctrico",
+icon:"🔌",
+contents:[
+"Ley de Gauss y ley de Coulomb: algunas aplicaciones",
+"Potencial eléctrico",
+"Potencial debido a una carga punto",
+"Potencial debido a un dipolo"
+]
+},
+
+{
+w:5,
+title:"Capacitancia y fuentes",
+icon:"⚡",
+lab:true,
+contents:[
+"Generador electrostático",
+"Capacitancia y su cálculo",
+"Dieléctricos",
+"Fuerza electromotriz"
+]
+},
+
+{
+w:6,
+title:"Corriente eléctrica",
+icon:"🔋",
+contents:[
+"Cálculo de corriente",
+"Diferencias de potencial",
+"Corriente y densidad de corriente"
+]
+},
+
+{
+w:7,
+title:"Resistencia y redes",
+icon:"🔧",
+contents:[
+"Resistencia, resistividad y conductividad",
+"Intercambios de energía en un circuito eléctrico",
+"Redes eléctricas"
+]
+},
+
+{
+w:8,
+title:"Medición y circuitos RC",
+icon:"📐",
+contents:[
+"Medición de corrientes y de diferencias de potencial",
+"El potenciómetro",
+"Circuitos RC"
+]
+},
+
+{
+w:9,
+title:"Campo magnético",
+icon:"🧲",
+lab:true,
+contents:[
+"El campo magnético",
+"Ley de Ampère",
+"Líneas de inducción magnética",
+"La ley de Biot-Savart"
+]
+},
+
+{
+w:10,
+title:"Inducción electromagnética",
+icon:"🔄",
+contents:[
+"Ley de Faraday",
+"Ley de Lenz",
+"Inducción: estudio cuantitativo"
+]
+},
+
+{
+w:11,
+title:"Electromagnetismo dinámico",
+icon:"〰️",
+lab:true,
+contents:[
+"Inductancia",
+"Propiedades magnéticas de la materia",
+"Oscilaciones electromagnéticas",
+"Ondas electromagnéticas"
+]
+},
+
+{
+w:12,
+title:"Naturaleza y propagación de la luz",
+icon:"💡",
+contents:[
+"Naturaleza y propagación de la luz",
+"Reflexión y refracción: ondas y superficies planas",
+"Reflexión y refracción: ondas y superficies esféricas"
+]
+},
+
+{
+w:13,
+title:"Óptica física",
+icon:"🌈",
+contents:[
+"Interferencias",
+"Difracción",
+"Redes y espectros",
+"Polarización"
+]
+},
+
+{
+w:14,
+title:"Luz y física cuántica",
+icon:"⚛️",
+lab:true,
+contents:[
+"Luz y física cuántica",
+"Ondas y partículas"
+]
+},
+
+{
+w:15,
+title:"Exposiciones y repaso",
+icon:"🏆",
+contents:[
+"Exposiciones y repaso"
+]
+}
+
+];
+
+
+/* ============================================================
+RENDER
+============================================================ */
+
+function render(){
+
+const container=document.getElementById("weeks");
+
+const search=
+document.getElementById("search")
+.value
+.toLowerCase()
+.trim();
+
+container.innerHTML="";
+
+weeks.forEach((week,index)=>{
+
+const filtered=week.contents.filter(c=>
+c.toLowerCase().includes(search) ||
+week.title.toLowerCase().includes(search)
+);
+
+if(search && filtered.length===0)return;
+
+let html=`
+
+<div class="week-head">
+
+<div>
+
+<div class="week-number">
+SEMANA ${String(week.w).padStart(2,"0")}
+</div>
+
+<div class="week-title">
+${week.title}
+</div>
+
+</div>
+
+<div class="week-icon">
+${week.icon}
+</div>
+
+</div>
+
+<div class="week-body">
+
+<div class="news">
+
+<div class="news-label">
+📰 NOTICIA DE LA SEMANA
+</div>
+
+<h4>
+${news[index][0]}
+</h4>
+
+<p>
+${news[index][1]}
+</p>
+
+<span class="source">
+${news[index][2]}
+</span>
+
+</div>
+`;
+
+filtered.forEach(content=>{
+
+const key="w"+week.w+"-"+content;
+
+const done=completed.includes(key);
+
+html+=`
+
+<div class="content">
+
+<div class="content-name">
+${content}
+</div>
+
+<div class="content-bottom">
+
+<button
+class="mission-btn"
+onclick="openMission(${week.w},'${safe(content)}')">
+
+${done ? "↻ Revisar misión":"🎯 Iniciar misión"}
+
+</button>
+
+<span
+class="done"
+style="${done ? "" : "color:var(--muted)"}">
+
+${done ? "✓ COMPLETADA":"+20 XP"}
+
+</span>
+
+</div>
+
+</div>
+
+`;
+
+});
+
+
+if(week.lab){
+
+html+=`
+
+<div class="lab-banner">
+
+<strong>
+🔬 LABORATORIO DE LA SEMANA
+</strong>
+
+<p>
+Esta semana incluye una experiencia experimental.
+Debe realizar el laboratorio correspondiente.
+<strong style="color:white">
+Ver el laboratorio del entorno.
+</strong>
+</p>
+
+<a
+href="#laboratorios"
+class="lab-link">
+
+VER EL LABORATORIO EN EL ENTORNO
+
+</a>
+
+</div>
+
+`;
+
+}
+
+html+=`
+</div>
+`;
+
+const div=document.createElement("div");
+
+div.className="week";
+
+div.innerHTML=html;
+
+container.appendChild(div);
+
+});
+
+updateProgress();
+
+}
+
+
+/* ============================================================
+OPEN
+============================================================ */
+
+function openMission(week,content){
+
+const key="w"+week+"-"+content;
+
+currentKey=key;
+
+const activity=A[content];
+
+document.getElementById("modalWeek")
+.textContent=
+"SEMANA "+String(week).padStart(2,"0")+" · MISIÓN · 90 MIN";
+
+document.getElementById("modalTitle")
+.textContent=content;
+
+document.getElementById("case")
+.textContent=activity.case;
+
+const data=document.getElementById("data");
+
+data.innerHTML="";
+
+activity.data.forEach(row=>{
+
+data.innerHTML+=`
+
+<div class="data-row">
+
+<span>${row[0]}</span>
+
+<span>${row[1]}</span>
+
+</div>
+
+`;
+
+});
+
+
+const phases=document.getElementById("phases");
+
+phases.innerHTML="";
+
+activity.phases.forEach(p=>{
+
+phases.innerHTML+=`
+
+<div class="phase">
+
+<div class="phase-head">
+
+<span class="phase-title">
+${p[0]}
+</span>
+
+<span class="phase-time">
+${p[1]}
+</span>
+
+</div>
+
+<p>
+${p[2]}
+</p>
+
+</div>
+
+`;
+
+});
+
+
+document.getElementById("question")
+.textContent=activity.question;
+
+document.getElementById("evidence")
+.textContent=activity.evidence;
+
+const button=document.getElementById("complete");
+
+if(completed.includes(key)){
+
+button.textContent="✓ MISIÓN COMPLETADA";
+
+button.disabled=true;
+
+}else{
+
+button.textContent="✓ COMPLETAR MISIÓN · +20 XP";
+
+button.disabled=false;
+
+}
+
+document.getElementById("modal")
+.classList.add("active");
+
+document.body.style.overflow="hidden";
+
+}
+
+
+/* ============================================================
+COMPLETE
+============================================================ */
+
+function completeMission(){
+
+if(!currentKey)return;
+
+if(!completed.includes(currentKey)){
+
+completed.push(currentKey);
+
+localStorage.setItem(
+"genesisElectroCompleted",
+JSON.stringify(completed)
+);
+
+}
+
+closeModal();
+
+render();
+
+}
+
+
+/* ============================================================
+CLOSE
+============================================================ */
+
+function closeModal(){
+
+document
+.getElementById("modal")
+.classList.remove("active");
+
+document.body.style.overflow="";
+
+}
+
+
+/* ============================================================
+PROGRESS
+============================================================ */
+
+function updateProgress(){
+
+let total=0;
+
+weeks.forEach(w=>{
+total+=w.contents.length;
+});
+
+const done=completed.length;
+
+const percent=
+Math.round((done/total)*100);
+
+document.getElementById("progressText")
+.textContent=percent+"%";
+
+document.getElementById("progressFill")
+.style.width=percent+"%";
+
+document.getElementById("completed")
+.textContent=done;
+
+document.getElementById("total")
+.textContent=total;
+
+document.getElementById("xp")
+.textContent=done*20;
+
+}
+
+
+/* ============================================================
+UTILIDADES
+============================================================ */
+
+function safe(text){
+
+return text
+.replace(/\\/g,"\\\\")
+.replace(/'/g,"\\'");
+
+}
+
+function go(id){
+
+document
+.getElementById(id)
+.scrollIntoView({
+behavior:"smooth"
+});
+
+}
+
+document
+.getElementById("modal")
+.addEventListener("click",function(e){
+
+if(e.target===this){
+closeModal();
+}
+
+});
+
+document.addEventListener("keydown",e=>{
+
+if(e.key==="Escape"){
+closeModal();
+}
+
+});
+
+
+/* ============================================================
+INICIO
+============================================================ */
+
+render();
+
+</script>
+
+</body>
+</html>
